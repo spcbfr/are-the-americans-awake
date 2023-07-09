@@ -2,10 +2,10 @@ import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
 
 const places = [
   // Data is retrieved manually from census records since it doesn't update frequently
-  { baseName: "Chicago", timezone: "Central", population: 31 },
-  { baseName: "Denver", timezone: "Mountain", population: 7.5 },
-  { baseName: "New_york", timezone: "Mountain", population: 45 },
-  { baseName: "Los_Angeles", timezone: "Mountain", population: 16.5 },
+  { baseName: "Chicago", timezone: "Central", population: 30.38 },
+  { baseName: "Denver", timezone: "Mountain", population: 7.49 },
+  { baseName: "New_york", timezone: "Eastern", population: 45.42 },
+  { baseName: "Los_Angeles", timezone: "Pacific", population: 16.58 },
 ] as const;
 export const usaTime = createTRPCRouter({
   percent: publicProcedure.query(({}) => {
