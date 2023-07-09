@@ -18,6 +18,20 @@ export default function Home() {
           name="description"
           content="A site to know how many of the americans are awake"
         />
+        <meta property="og:image" content="/og.jpg" />
+        <meta property="og:image:type" content="article" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:title" content="Are the Americans Awake?" />
+        <meta
+          property="og:description"
+          content="Gotta time those hackernews posts right.."
+        />
+        <meta
+          property="og:url"
+          content="https://are-the-americans-awake.yusuf.fyi"
+        />
+
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="mx-auto mt-16 flex w-full max-w-4xl flex-col justify-center gap-4">
