@@ -47,6 +47,7 @@ export default function Home() {
   for (const place of data) {
     if (place.awake) percentAwake += place.population;
   }
+  percentAwake = Math.round((percentAwake + Number.EPSILON) * 100) / 100; // precise rounding
   const areTheAmericansAwake = percentAwake >= 50;
   console.log(data);
   return (
