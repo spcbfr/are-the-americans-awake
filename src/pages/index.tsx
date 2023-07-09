@@ -53,7 +53,7 @@ export default function Home() {
   return (
     <>
       {metadata}
-      <main className="mx-auto mt-16 flex w-full max-w-4xl flex-col justify-center gap-4">
+      <main className="mt-16 flex w-full flex-col justify-center gap-4 px-5 md:mx-auto md:max-w-4xl">
         <div className="text-center text-3xl">
           <strong>{areTheAmericansAwake ? "Yes" : "No"}</strong>, in fact around{" "}
           <span className="font-bold text-emerald-900">
@@ -62,16 +62,16 @@ export default function Home() {
           of americans are {areTheAmericansAwake ? "Awake" : "Asleep"} right
           now.{" "}
         </div>
-        <p className="text-2xl">
+        <p className="text-center text-lg md:text-left md:text-2xl">
           “but why is this useful information?” <em>you might ask</em>.
         </p>
-        <p className="text-2xl leading-relaxed">
+        <p className="text-base md:text-2xl">
           well, americans make up around 50% of reddit users and the
           overwhelming majority of Threads&apos;s userbase especially since
           it&apos;s banned in certain countries in europe. so these days knowing
           when the americans are awake can be a pretty useful skill. given that
-          the USA decided that having 4, 9 or 11 timezones — depending on how to
-          count — was completely manageble on their end, I unfortunatly was
+          the USA decided that having 4, 9 or 11 timezones — depending on how
+          you count — was completely manageble on their end, I unfortunatly was
           obliged by{" "}
           <code className="rounded-md bg-slate-100 px-2 py-1">
             Official Programmer State Law
@@ -85,7 +85,7 @@ export default function Home() {
             {place.awake ? "awake" : "asleep"}
           </div>
         ))*/}
-        <footer className="text-lg">
+        <footer className="text-base md:text-lg">
           If you&apos;ve found this helpful,{" "}
           <a
             className="font-bold text-sky-800 underline decoration-sky-800/30 decoration-[2px] transition-colors hover:text-sky-950"
@@ -94,8 +94,9 @@ export default function Home() {
             consider donating
           </a>{" "}
           for emotional support and therapist money, I really shouldn&apos;t
-          have looked at javascript <code>Date Object</code> specs for that
-          long.. <br /> <br />
+          have looked at javascript{" "}
+          <code className="rounded-md bg-slate-100 px-2 py-1">Date Object</code>{" "}
+          specs for that long.. <br /> <br />
           Otherwise, check out the articles I write on{" "}
           <a
             href="https://yusuf.fyi"
