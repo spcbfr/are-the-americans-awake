@@ -2,8 +2,33 @@ import Head from "next/head";
 import { api } from "~/utils/api";
 
 export default function Home() {
-  const { data } = api.usaTime.percent.useQuery();
-  if (!data) return <div>Something went wrong</div>;
+  const metadata = (
+    <Head>
+      <title>Are the Americans Awake?</title>
+      <meta
+        property="description"
+        content="A site to know how many of the americans are awake"
+      />
+      <meta property="og:image" content="/og.jpg" />
+      <meta property="og:image:type" content="article" />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:title" content="Are the Americans Awake?" />
+      <meta
+        property="og:description"
+        content="Gotta time those hackernews posts right.."
+      />
+      <meta
+        property="og:url"
+        content="https://are-the-americans-awake.yusuf.fyi"
+      />
+
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
+  );
+  const { data, isLoading } = api.usaTime.percent.useQuery();
+  if (isLoading) return metadata;
+  if (!data) return <div>something went wrong</div>;
   let percentAwake = 0;
   for (const place of data) {
     if (place.awake) percentAwake += place.population;
@@ -12,28 +37,7 @@ export default function Home() {
   console.log(data);
   return (
     <>
-      <Head>
-        <title>Are the Americans Awake?</title>
-        <meta
-          name="description"
-          content="A site to know how many of the americans are awake"
-        />
-        <meta property="og:image" content="/og.jpg" />
-        <meta property="og:image:type" content="article" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:title" content="Are the Americans Awake?" />
-        <meta
-          property="og:description"
-          content="Gotta time those hackernews posts right.."
-        />
-        <meta
-          property="og:url"
-          content="https://are-the-americans-awake.yusuf.fyi"
-        />
-
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+      {metadata}
       <main className="mx-auto mt-16 flex w-full max-w-4xl flex-col justify-center gap-4">
         <div className="text-center text-3xl">
           <strong>{areTheAmericansAwake ? "Yes" : "No"}</strong>, in fact around{" "}
