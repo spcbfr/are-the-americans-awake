@@ -9,8 +9,11 @@ export default function Home() {
         property="description"
         content="A site to know how many of the americans are awake"
       />
-      <meta property="og:image" content="/og.jpg" />
-      <meta property="og:image:type" content="article" />
+      <meta
+        property="og:image"
+        content="https://are-the-americans-awake.yusuf.fyi/og.jpg"
+      />
+      <meta property="og:type" content="article" />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:title" content="Are the Americans Awake?" />
@@ -18,6 +21,17 @@ export default function Home() {
         property="og:description"
         content="Gotta time those hackernews posts right.."
       />
+
+      <meta
+        property="twitter:image"
+        content="https://are-the-americans-awake.yusuf.fyi/og.jpg"
+      />
+      <meta property="twitter:title" content="Are the Americans Awake?" />
+      <meta
+        property="twitter:description"
+        content="Gotta time those hackernews posts right.."
+      />
+      <meta property="twitter:card" content="summary_large_image" />
       <meta
         property="og:url"
         content="https://are-the-americans-awake.yusuf.fyi"
