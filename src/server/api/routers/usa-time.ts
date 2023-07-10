@@ -18,7 +18,10 @@ export const usaTime = createTRPCRouter({
       const hour = parseInt(time.slice(0, 2));
       let awake = false;
       // if time is between 8 AM and 11 PM
-      if ((isAM && hour >= 8) || (!isAM && hour < 11)) {
+      if (
+        (isAM && hour >= 8 && hour <= 11) ||
+        (!isAM && hour >= 1 && hour <= 11)
+      ) {
         awake = true;
       }
       const cleanBaseName = place.baseName.replace("_", " ");
@@ -33,6 +36,7 @@ export const usaTime = createTRPCRouter({
     for (const place of placesWithTime) {
       if (place.awake) percentAwake += place.population;
     }
+    console.log(placesWithTime);
     percentAwake = Math.round((percentAwake + Number.EPSILON) * 100) / 100; // precise rounding
     return percentAwake;
   }),

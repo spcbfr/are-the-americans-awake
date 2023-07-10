@@ -110,7 +110,7 @@ export default function Home() {
             total USA population, E kala mai iaʻu Alaska and Hawaii :(
           </li>
           <li>
-            I consider awake to mean from 8AM to 11PM, you <em>are</em> getting
+            I consider awake to mean from 8AM to 12PM, you <em>are</em> getting
             at least 8 hours of sleep, right?
           </li>
           <li>
