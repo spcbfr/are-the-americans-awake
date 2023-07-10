@@ -55,12 +55,12 @@ export default function Home() {
       {metadata}
       <main className="mt-16 flex w-full flex-col justify-center gap-4 px-5 md:mx-auto md:max-w-4xl">
         <div className="text-center text-3xl">
-          <strong>{areTheAmericansAwake ? "Yes" : "No"}</strong>, in fact around{" "}
+          <strong>{areTheAmericansAwake ? "Yes" : "No"}</strong>, in fact{" "}
+          {!areTheAmericansAwake ? "only" : null} around{" "}
           <span className="font-bold text-emerald-900">
             {percentAwake} percent
           </span>{" "}
-          of americans are {areTheAmericansAwake ? "Awake" : "Asleep"} right
-          now.{" "}
+          of americans are awake right now.{" "}
         </div>
         <p className="text-center text-lg md:text-left md:text-2xl">
           “but why is this useful information?” <em>you might ask</em>.
