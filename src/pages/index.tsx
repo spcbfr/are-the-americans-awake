@@ -43,7 +43,12 @@ export default function Home() {
   const { data, isLoading } = api.usaTime.percent.useQuery();
   if (isLoading) return metadata;
   if (!data) return <div>something went wrong</div>;
-  const areTheAmericansAwake = data >= 50;
+  let percentAwake = 0;
+  for (const place of data) {
+    if (place.awake) percentAwake += place.population;
+  }
+  percentAwake = Math.round((percentAwake + Number.EPSILON) * 100) / 100; // precise rounding
+  const areTheAmericansAwake = percentAwake >= 50;
   console.log(data);
   return (
     <>
@@ -51,8 +56,11 @@ export default function Home() {
       <main className="mt-16 flex w-full flex-col justify-center gap-4 px-5 md:mx-auto md:max-w-4xl">
         <div className="text-center text-3xl">
           <strong>{areTheAmericansAwake ? "Yes" : "No"}</strong>, in fact around{" "}
-          <span className="font-bold text-emerald-900">{data} percent</span> of
-          americans are {areTheAmericansAwake ? "Awake" : "Asleep"} right now.{" "}
+          <span className="font-bold text-emerald-900">
+            {percentAwake} percent
+          </span>{" "}
+          of americans are {areTheAmericansAwake ? "Awake" : "Asleep"} right
+          now.{" "}
         </div>
         <p className="text-center text-lg md:text-left md:text-2xl">
           “but why is this useful information?” <em>you might ask</em>.
@@ -71,12 +79,6 @@ export default function Home() {
           to make this tool to help my fellow non-americans.
         </p>
         <hr className="h-[3px] border-none bg-slate-200" />
-        {/*data?.map((place) => (
-          <div key={place.baseName}>
-            it&apos;s {place.time} in {place.baseName} and they are{" "}
-            {place.awake ? "awake" : "asleep"}
-          </div>
-        ))*/}
         <footer className="text-base md:text-lg">
           If you&apos;ve found this helpful,{" "}
           <a
@@ -105,9 +107,9 @@ export default function Home() {
             <strong>
               <em>around</em>
             </strong>{" "}
-            {data} percent because it&apos;s not totally accurate, I ignored
-            timezones whose population makes up less than .4 percent of the
-            total USA population, E kala mai iaʻu Alaska and Hawaii :(
+            {percentAwake} percent because it&apos;s not totally accurate, I
+            ignored timezones whose population makes up less than .4 percent of
+            the total USA population, E kala mai iaʻu Alaska and Hawaii :(
           </li>
           <li>
             I consider awake to mean from 8AM to 12PM, you <em>are</em> getting

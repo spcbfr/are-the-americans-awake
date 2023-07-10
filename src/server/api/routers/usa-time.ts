@@ -9,7 +9,7 @@ const places = [
 ] as const;
 export const usaTime = createTRPCRouter({
   percent: publicProcedure.query(({}) => {
-    const placesWithTime = places.map((place) => {
+    return places.map((place) => {
       const time = new Date().toLocaleString("en-US", {
         timeZone: `america/${place.baseName}`,
         hour: "2-digit",
@@ -32,12 +32,5 @@ export const usaTime = createTRPCRouter({
         baseName: cleanBaseName,
       };
     });
-    let percentAwake = 0;
-    for (const place of placesWithTime) {
-      if (place.awake) percentAwake += place.population;
-    }
-    console.log(placesWithTime);
-    percentAwake = Math.round((percentAwake + Number.EPSILON) * 100) / 100; // precise rounding
-    return percentAwake;
   }),
 });
